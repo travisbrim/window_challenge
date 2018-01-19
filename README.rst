@@ -1,6 +1,49 @@
 window_challenge
 ================
 
+Installation
+------------
+Clone this repository locally.
+
+Running the solution
+--------------------
+
+1. Copy the input file to the cloned directory ``window_challenge/window_challenge``
+2. From inside the cloned directory containing the script (window_challenge/window_challenge), run the challenge solution with ``python window_challenge.py <input file>`` where <input file> is the name of the input file including extension (ex. 'input.txt')
+
+Running unit tests, performance tests, etc.
+-------------------------------------------
+
+Performance testing for time is performed using the standard time lib, but the ``guppy`` package is required for the default memory testing below.
+
+If necessary, ``pip install guppy`` to resolve import errors.
+
+Custom performance testing
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. To test performance with a custom input file, copy the file to the cloned directory ``window_challenge/window_challenge``.
+2. From inside the cloned directory containing the script (window_challenge/window_challenge), run the tests with ``python test_window_challenge.py <input file>`` where <input file> is the name of the input file including extension (ex. 'input.txt')
+
+Running the included tests
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+From inside the cloned directory containing the script (window_challenge/window_challenge), run the tests with ``python test_window_challenge.py``
+
+
+
+
+Explanation
+-----------
+
+The solution first processes the input data into a new list of values representing increasing & decreasing ranges (hereafter, ``processed_vals`` consistent with the solution script).
+
+ex. input data ``188930 194123 201345 154243 154243`` yields ``[1, 2, -1, 0]``
+
+Where a < b, the next value appended is equal to the last value in the list + 1 when the last value is greater than or equal to zero, otherwise 1 is appended.  Similarly, when a > b, the next value appended is equal to the last value in the list - 1 when the last value is less than or equal to zero, otherwise -1 is appended.  When a = b, 0 is appended.
+
+
+
+
 For this problem, you are given N days of average home sale price data, and a fixed window size K . For each window of K days, from left to right, find the number of increasing subranges within the window minus the number of decreasing subranges within the window.
 
 A window of days is defined as a contiguous range of days. Thus, there are exactly N-K+1 windows where this metric needs to be computed. An increasing subrange is defined as a contiguous range of indices [a,b], a < b , where each element is larger than the previous element. A decreasing subrange is similarly defined, except each element is smaller than the previous element.
@@ -43,31 +86,3 @@ For the first window of [188930, 194123, 201345], there are 3 increasing subrang
 Performance
 
 Your solution should run in less than 10 seconds and use less than 50MB of memory with a valid input of any size (within the given constraints).
-
-Installation
-------------
-Clone this repository locally.
-
-Running the solution
---------------------
-
-1. Copy the input file to the cloned directory ``window_challenge/window_challenge``
-2. From inside the cloned directory containing the script (window_challenge/window_challenge), run the challenge solution with ``python window_challenge.py <input file>`` where <input file> is the name of the input file including extension (ex. 'input.txt')
-
-Running unit tests, performance tests, etc.
--------------------------------------------
-
-Performance testing for time is performed using the standard time lib, but the ``guppy`` package is required for the default memory testing below.
-
-If necessary, ``pip install guppy`` to resolve import errors.
-
-Custom performance testing
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. To test performance with a custom input file, copy the file to the cloned directory ``window_challenge/window_challenge``.
-2. From inside the cloned directory containing the script (window_challenge/window_challenge), run the tests with ``python test_window_challenge.py <input file>`` where <input file> is the name of the input file including extension (ex. 'input.txt')
-
-Running the included tests
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-From inside the cloned directory containing the script (window_challenge/window_challenge), run the tests with ``python test_window_challenge.py``
