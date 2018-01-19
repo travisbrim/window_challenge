@@ -37,11 +37,11 @@ Explanation
 
 The solution first processes the input data into a new list of values representing increasing & decreasing ranges (hereafter, ``processed_vals`` consistent with the solution script).
 
-ex. input data ``188930 194123 201345 154243 154243`` yields ``[1, 2, -1, 0]``
+    ex. input data ``188930 194123 201345 154243 154243`` yields ``[1, 2, -1, 0]``
 
-Where a < b, the next value appended is equal to the last value in the list + 1 when the last value is greater than or equal to zero, otherwise 1 is appended.  Similarly, when a > b, the next value appended is equal to the last value in the list - 1 when the last value is less than or equal to zero, otherwise -1 is appended.  When a = b, 0 is appended.
+When a < b, the next value appended is equal to the last value in the list + 1 when the last value is greater than or equal to zero, otherwise 1 is appended.  Similarly, when a > b, the next value appended is equal to the last value in the list - 1 when the last value is less than or equal to zero, otherwise -1 is appended.  When a = b, 0 is appended.
 
-
+-----------
 
 
 For this problem, you are given N days of average home sale price data, and a fixed window size K . For each window of K days, from left to right, find the number of increasing subranges within the window minus the number of decreasing subranges within the window.
