@@ -48,8 +48,26 @@ Installation
 ------------
 Clone this repository locally.
 
-Running the scripts
--------------------
+Running the solution
+--------------------
 
 1. Copy the input file to the cloned directory ``window_challenge/window_challenge``
 2. From inside the cloned directory containing the script (window_challenge/window_challenge), run the challenge solution with ``python window_challenge.py <input file>`` where <input file> is the name of the input file including extension (ex. 'input.txt')
+
+Running unit tests, performance tests, etc.
+-------------------------------------------
+
+Performance testing for time is performed using the standard time lib, but the ``guppy`` package is required for the default memory testing below.
+
+If necessary, ``pip install guppy`` to resolve import errors.
+
+Custom performance testing
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. To test performance with a custom input file, copy the file to the cloned directory ``window_challenge/window_challenge``.
+2. From inside the cloned directory containing the script (window_challenge/window_challenge), run the tests with ``python test_window_challenge.py <input file>`` where <input file> is the name of the input file including extension (ex. 'input.txt')
+
+Running the included tests
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+From inside the cloned directory containing the script (window_challenge/window_challenge), run the tests with ``python test_window_challenge.py``

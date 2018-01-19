@@ -54,7 +54,7 @@ def left_subrange(vals):
 
     return output
 
-def main(filename):
+def main(filename, testing=False):
     with open(filename, 'r') as f:
         parsed_input = input_parser(f)
 
