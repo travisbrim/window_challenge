@@ -43,3 +43,13 @@ For the first window of [188930, 194123, 201345], there are 3 increasing subrang
 Performance
 
 Your solution should run in less than 10 seconds and use less than 50MB of memory with a valid input of any size (within the given constraints).
+
+Installation
+------------
+Clone this repository locally.
+
+Running the scripts
+-------------------
+
+1. Copy the input file to the cloned directory ``window_challenge/window_challenge``
+2. From inside the cloned directory containing the script (window_challenge/window_challenge), run the challenge solution with ``python window_challenge.py <input file>`` where <input file> is the name of the input file including extension (ex. 'input.txt')
