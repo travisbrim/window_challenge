@@ -41,8 +41,15 @@ The solution first processes the input data into a new list of values representi
 
 When a < b, the next value appended is equal to the last value in the list + 1 when the last value is greater than or equal to zero, otherwise 1 is appended.  Similarly, when a > b, the next value appended is equal to the last value in the list - 1 when the last value is less than or equal to zero, otherwise -1 is appended.  When a = b, 0 is appended.
 
+    TODO: insert code here
+
+The net number of increasing and decreasing subranges in the first window of days can now be calculated as the sum of values in range [0,K-1].
+
+    ex. for the example input data above, ``[1, 2]`` = 3
+
 -----------
 
+For subsequent windows of days, the net number of increasing and deceasing subranges is only affected by the *new value being included on the right side of the range* and the *value now being excluded on the left side of the range*.
 
 For this problem, you are given N days of average home sale price data, and a fixed window size K . For each window of K days, from left to right, find the number of increasing subranges within the window minus the number of decreasing subranges within the window.
 
