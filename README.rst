@@ -1,4 +1,5 @@
-# window_challenge
+window_challenge
+================
 
 For this problem, you are given N days of average home sale price data, and a fixed window size K . For each window of K days, from left to right, find the number of increasing subranges within the window minus the number of decreasing subranges within the window.
 
