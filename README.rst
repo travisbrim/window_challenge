@@ -39,13 +39,13 @@ The solution first processes the input data into a new list of values representi
 
     ex. input data ``188930 194123 201345 154243 154243`` yields ``[1, 2, -1, 0]``
 
-When a < b, the next value appended is equal to:
+When a < b, the next value appended is equal to: ::
   the last value in the list + 1 when the last value is greater than or equal to zero,
   otherwise 1 is appended.
-Similarly, when a > b, the next value appended is equal to:
+Similarly, when a > b, the next value appended is equal to: ::
   the last value in the list - 1 when the last value is less than or equal to zero,
   otherwise -1 is appended.
-When a = b, 0 is appended.
+When a = b, 0 is appended. ::
 
     def subrange_processor(vals):
 
