@@ -1,6 +1,10 @@
 window_challenge
 ================
 
+Implementation
+--------------
+Assumes Python 2.7.10+, untested for Python 3 and earlier versions of Python 2.
+
 Installation
 ------------
 Clone this repository locally.
