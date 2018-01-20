@@ -104,29 +104,34 @@ If the absolute value of the new value is less than or equal to (K-1), the new v
 If, as a consequence of the above, ``left`` is equal to zero, the value is recalculated using the ``left_subrange_len`` function and the current window of days before continuing the loop. ::
 
     for ix in range(1, parsed_input.n-parsed_input.k+1):
-        print processed_vals[ix:(ix+parsed_input.k-1)]
+        window = processed_vals[ix:(ix+parsed_input.k-1)]
+        next_val = processed_vals[ix + parsed_input.k-2]
         # handle new value on the right
-        if abs(processed_vals[ix + parsed_input.k-2]) >= (parsed_input.k-1):
-            net = copysign(parsed_input.k * (parsed_input.k-1) / 2, processed_vals[ix + parsed_input.k-2])
+        if abs(next_val) >= (parsed_input.k-1):
+            net = copysign(parsed_input.k * (parsed_input.k-1) / 2, next_val)
+            # note: copysign results in a float, hence the need for int(net)
             print str(int(net))
+            # if the entire range in increasing or decreasing, the impact
+            # of removing the leftmost val can never be greater than
+            # +/- (K-1)
             left = copysign((parsed_input.k - 1), processed_vals[ix + parsed_input.k-2])
             continue
 
-        net += processed_vals[ix + parsed_input.k-2]
+        # if abs(next_val) < (parsed_input.k-1)
+
+        # add impact of the new val on the right
+        net += next_val
+
         # handle value on the left that is no longer included
-        if abs(left) > (parsed_input.k-1):
-            net -= (copysign((parsed_input.k-1), left))
-            if processed_vals[parsed_input.k-1] <= parsed_input.k:
-                left -= copysign(1, left)
-        else:
-            net -= left
-            if processed_vals[parsed_input.k-1] <= parsed_input.k:
-                left -= copysign(1, left)
+        net -= left
+        # increment left toward 0
+        left -= copysign(1, left)
 
-        # if the left list is exhausted, recalc
+        # if the left list is exhausted, recalculate based on this window
         if not left:
-            left = left_subrange_len(deepcopy(processed_vals[ix:(ix+parsed_input.k-1)]))
+            left = left_subrange_len(deepcopy(window)) # TODO: deepcopy?
 
+        # note: copysign results in a float, hence the need for int(net)
         print str(int(net))
 
 -----------
