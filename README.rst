@@ -39,9 +39,36 @@ The solution first processes the input data into a new list of values representi
 
     ex. input data ``188930 194123 201345 154243 154243`` yields ``[1, 2, -1, 0]``
 
-When a < b, the next value appended is equal to the last value in the list + 1 when the last value is greater than or equal to zero, otherwise 1 is appended.  Similarly, when a > b, the next value appended is equal to the last value in the list - 1 when the last value is less than or equal to zero, otherwise -1 is appended.  When a = b, 0 is appended.
+When a < b, the next value appended is equal to:
+  the last value in the list + 1 when the last value is greater than or equal to zero,
+  otherwise 1 is appended.
+Similarly, when a > b, the next value appended is equal to:
+  the last value in the list - 1 when the last value is less than or equal to zero,
+  otherwise -1 is appended.
+When a = b, 0 is appended.
 
-    TODO: insert code here
+    def subrange_processor(vals):
+
+        if len(vals) < 1:
+            raise ValueError('Input list cannot be empty')
+
+        output = []
+
+        for ix in range(1, len(vals)):
+            if (int(vals[ix]) > int(vals[ix-1])):
+                if output and output[-1] > 0:
+                    output.append(output[-1] + 1)
+                else:
+                    output.append(1)
+            elif (int(vals[ix]) < int(vals[ix-1])):
+                if output and output[-1] < 0:
+                    output.append(output[-1] - 1)
+                else:
+                    output.append(-1)
+            else:
+                output.append(0)
+
+        return output
 
 The net number of increasing and decreasing subranges in the first window of days can now be calculated as the sum of values in range [0,K-1].
 
@@ -50,6 +77,17 @@ The net number of increasing and decreasing subranges in the first window of day
 -----------
 
 For subsequent windows of days, the net number of increasing and deceasing subranges is only affected by the *new value being included on the right side of the range* and the *value now being excluded on the left side of the range*.
+
+The solution handles the new value being included on the right side using the following logic:
+
+    IF the absolute value of the new value is greater than or equal to (K-1), the *entire window of days is either increasing or decreasing*.  The net is updated to reflect ``(N)(N-1)/2`` (positive or negative consistent with the sign of the new value).  No further calculations need to be done for this window of days.
+
+    IF the absolute value of the new value is less than or equal to (K-1), the new value is added to the net total.
+
+
+
+
+
 
 For this problem, you are given N days of average home sale price data, and a fixed window size K . For each window of K days, from left to right, find the number of increasing subranges within the window minus the number of decreasing subranges within the window.
 
