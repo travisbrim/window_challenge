@@ -73,6 +73,22 @@ The net number of increasing and decreasing subranges in the first window of day
 
     ex. for the example input data above, ``[1, 2]`` = 3
 
+The solution also stores the maximum value of the first increasing, decreasing, or flat subrange included in the initial window of days (explained below). ::
+
+    def left_subrange_len(vals):
+        output = vals.pop(0)
+
+        if output == 0:
+            return output
+
+        for val in vals:
+            if (abs(val) > abs(output)):
+                output += copysign(1, abs(val))
+            else:
+                break
+
+        return output
+
 -----------
 
 For subsequent windows of days, the net number of increasing and deceasing subranges is only affected by the *new value being included on the right side of the range* and the *value now being excluded on the left side of the range*.
