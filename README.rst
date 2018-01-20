@@ -41,7 +41,9 @@ The solution first processes the input data into a new list of values representi
 
 
 When a < b, the next value appended is equal to the last value in the list + 1 when the last value is greater than or equal to zero, otherwise 1 is appended.
+
 Similarly, when a > b, the next value appended is equal to the last value in the list - 1 when the last value is less than or equal to zero, otherwise -1 is appended.
+
 When a = b, 0 is appended. ::
 
     def subrange_processor(vals):
